@@ -1,0 +1,58 @@
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+import Home from './pages/Home';
+import Contacts from './pages/Contacts';
+import About from './pages/About';
+import ProductsIndex from './pages/ProductsIndex';
+import ProductsIndex2 from './pages/ProductsIndex2';
+import ProductsShow from "./pages/ProductsShow";
+import NotFound from "./pages/404";
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: Home,
+        },
+        {
+            path: '/contatti',
+            name: 'contatti',
+            component: Contacts
+        },
+        {
+            path: '/chi-siamo',
+            name: 'chi-siamo',
+            component: About
+        },
+        {
+            // pagina semplice con tutti i prodotti listati assieme
+            path: '/prodotti',
+            name: 'prodotti',
+            component: ProductsIndex
+        },
+        {
+            // pagina con i prodotti divisi per forma (shape)
+            path: '/prodotti2',
+            name: 'prodotti2',
+            component: ProductsIndex2
+        },
+        {
+            // pagina di dettaglio prodotto con slug
+            path: '/prodotti/:slug',
+            name: 'prodotto',
+            component: ProductsShow
+        },
+        {
+            path: '*',
+            name: '404',
+            component: NotFound
+        }
+    ],
+    linkActiveClass: 'active'
+});
+
+export default router
